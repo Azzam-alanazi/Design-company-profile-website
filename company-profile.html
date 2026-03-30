@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAISON ÉLITE — Luxury Design Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #C8A96E; --gold-light: #E8D5A3; --gold-dim: #7a6540;
+    --black: #0A0A0A; --dark: #111111; --dark2: #181818; --dark3: #222222;
+    --white: #F5F0E8; --grey: #888880;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-arabic: 'Noto Naskh Arabic', serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; cursor: none; }
+
+  /* ARABIC */
+  html[lang="ar"] body { font-family: var(--font-arabic); font-weight: 400; }
+  html[lang="ar"] .hero-title, html[lang="ar"] .section-title, html[lang="ar"] .service-name,
+  html[lang="ar"] .step-title, html[lang="ar"] .testimonial-text, html[lang="ar"] .portfolio-name,
+  html[lang="ar"] .footer-logo { font-family: var(--font-arabic); letter-spacing: 0; }
+  html[lang="ar"] .section-label { flex-direction: row-reverse; justify-content: flex-end; letter-spacing: 0; font-size: 0.8rem; text-transform: none; }
+  html[lang="ar"] .section-label::before { display: none; }
+  html[lang="ar"] .section-label::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  html[lang="ar"] nav { flex-direction: row-reverse; }
+  html[lang="ar"] .nav-links { flex-direction: row-reverse; }
+  html[lang="ar"] .nav-links a { letter-spacing: 0; font-size: 0.8rem; }
+  html[lang="ar"] .hero-content { direction: rtl; }
+  html[lang="ar"] .hero-eyebrow { letter-spacing: 0; font-size: 0.9rem; }
+  html[lang="ar"] .hero-subtitle { letter-spacing: 0; font-size: 0.9rem; text-transform: none; }
+  html[lang="ar"] .hero-cta { letter-spacing: 0; font-size: 0.95rem; text-transform: none; flex-direction: row-reverse; }
+  html[lang="ar"] .hero-cta::after { display: none; }
+  html[lang="ar"] .hero-cta::before { content: ''; display: block; width: 60px; height: 1px; background: var(--gold); transition: width 0.3s; }
+  html[lang="ar"] .hero-cta:hover::before { width: 90px; }
+  html[lang="ar"] .about-inner { direction: rtl; }
+  html[lang="ar"] .about-text p { line-height: 2.5; }
+  html[lang="ar"] .stat-label { letter-spacing: 0; font-size: 0.75rem; text-transform: none; }
+  html[lang="ar"] .stats-row { direction: rtl; }
+  html[lang="ar"] .services-header { direction: rtl; }
+  html[lang="ar"] .service-card { direction: rtl; }
+  html[lang="ar"] .service-card::before { transform-origin: right; }
+  html[lang="ar"] .service-num { font-family: var(--font-arabic); }
+  html[lang="ar"] .service-desc { line-height: 2.4; }
+  html[lang="ar"] .service-link { letter-spacing: 0; font-size: 0.78rem; text-transform: none; flex-direction: row-reverse; }
+  html[lang="ar"] .service-link::after { content: '←'; }
+  html[lang="ar"] .services-desc { line-height: 2.4; }
+  html[lang="ar"] .process-steps { direction: rtl; }
+  html[lang="ar"] .step-desc { line-height: 2.4; }
+  html[lang="ar"] .portfolio-header { direction: rtl; }
+  html[lang="ar"] .portfolio-overlay { direction: rtl; }
+  html[lang="ar"] .portfolio-tag { letter-spacing: 0; font-size: 0.72rem; text-transform: none; }
+  html[lang="ar"] .testimonial-text { font-style: normal; direction: rtl; }
+  html[lang="ar"] .testimonial-author { letter-spacing: 0; font-size: 0.82rem; text-transform: none; }
+  html[lang="ar"] .contact-inner { direction: rtl; }
+  html[lang="ar"] .contact-info p { line-height: 2.5; }
+  html[lang="ar"] .contact-details { direction: rtl; }
+  html[lang="ar"] .contact-item { direction: rtl; }
+  html[lang="ar"] .contact-item-label { letter-spacing: 0; font-size: 0.72rem; text-transform: none; }
+  html[lang="ar"] .form-field label { letter-spacing: 0; font-size: 0.75rem; text-transform: none; text-align: right; }
+  html[lang="ar"] .form-field input, html[lang="ar"] .form-field textarea, html[lang="ar"] .form-field select { font-family: var(--font-arabic); text-align: right; direction: rtl; }
+  html[lang="ar"] .btn-submit { font-family: var(--font-arabic); letter-spacing: 0; font-size: 0.9rem; text-transform: none; flex-direction: row-reverse; }
+  html[lang="ar"] .btn-submit:hover .arrow-icon { transform: translateX(-6px); }
+  html[lang="ar"] footer { direction: rtl; }
+  html[lang="ar"] .footer-copy { letter-spacing: 0; font-size: 0.72rem; }
+
+  /* CURSOR */
+  .cursor { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; transform: translate(-50%,-50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.18s ease; transform: translate(-50%,-50%); opacity: 0.6; }
+
+  /* LANG TOGGLE */
+  .lang-toggle { position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 500; display: flex; border: 1px solid rgba(200,169,110,0.4); overflow: hidden; backdrop-filter: blur(10px); background: rgba(10,10,10,0.85); }
+  .lang-btn { padding: 0.65rem 1.2rem; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); background: none; border: none; cursor: pointer; font-family: var(--font-body); transition: color 0.3s, background 0.3s; }
+  .lang-btn.active { background: var(--gold); color: var(--black); font-weight: 500; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; background: linear-gradient(to bottom, rgba(10,10,10,0.97), transparent); backdrop-filter: blur(4px); animation: fadeDown 1s ease 0.3s both; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.3em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 3rem; list-style: none; }
+  .nav-links a { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero { position: relative; height: 100vh; display: flex; align-items: flex-end; padding: 0 4rem 8rem; overflow: hidden; }
+  .hero-photo { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=85&auto=format&fit=crop'); background-size: cover; background-position: center 40%; transform: scale(1.04); animation: heroZoom 14s ease forwards; }
+  @keyframes heroZoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.3) 100%); z-index: 1; }
+  .hero-grid { position: absolute; inset: 0; z-index: 2; background-image: linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridShift 20s linear infinite; }
+  @keyframes gridShift { 0% { background-position: 0 0; } 100% { background-position: 80px 80px; } }
+  .hero-circle { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); width: 480px; height: 480px; border-radius: 50%; border: 1px solid rgba(200,169,110,0.18); animation: rotateSlow 30s linear infinite; z-index: 2; }
+  .hero-circle::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid rgba(200,169,110,0.1); }
+  .hero-circle::after { content: ''; position: absolute; inset: 80px; border-radius: 50%; border: 1px solid rgba(200,169,110,0.06); }
+  @keyframes rotateSlow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
+  .hero-content { position: relative; z-index: 3; max-width: 680px; }
+  .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; animation: fadeUp 1s ease 0.4s both; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(3.5rem, 6.5vw, 6rem); font-weight: 300; line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 2rem; animation: fadeUp 1s ease 0.6s both; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey); max-width: 380px; line-height: 2; margin-bottom: 3rem; animation: fadeUp 1s ease 0.8s both; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 1.5rem; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); text-decoration: none; animation: fadeUp 1s ease 1s both; transition: gap 0.3s; }
+  .hero-cta:hover { gap: 2.5rem; }
+  .hero-cta::after { content: ''; display: block; width: 60px; height: 1px; background: var(--gold); transition: width 0.3s; }
+  .hero-cta:hover::after { width: 90px; }
+
+  /* MARQUEE */
+  .marquee-wrap { overflow: hidden; border-top: 1px solid rgba(200,169,110,0.15); border-bottom: 1px solid rgba(200,169,110,0.15); padding: 1.2rem 0; background: var(--dark); }
+  .marquee-track { display: flex; gap: 4rem; white-space: nowrap; animation: marquee 22s linear infinite; }
+  .marquee-item { display: flex; align-items: center; gap: 1.5rem; font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--grey); flex-shrink: 0; }
+  .marquee-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 8rem 4rem; }
+  .section-label { font-size: 0.55rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; margin-bottom: 1.5rem; }
+  .section-title em { font-style: italic; color: var(--gold); }
+  html[lang="ar"] .section-title em { font-style: normal; }
+
+  /* ABOUT */
+  .about { background: var(--dark); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; max-width: 1300px; margin: 0 auto; }
+  .about-image { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+  .about-photo { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .about-image:hover .about-photo { transform: scale(1.04); }
+  .about-corner { position: absolute; width: 70px; height: 70px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); top: -12px; left: -12px; z-index: 2; pointer-events: none; }
+  .about-corner.br { border-top: none; border-left: none; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); top: auto; left: auto; bottom: -12px; right: -12px; }
+  .about-text p { font-size: 0.75rem; line-height: 2.2; color: var(--grey); margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+  .about-text p strong { color: var(--white); font-weight: 400; }
+  .stats-row { display: flex; gap: 3rem; margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid rgba(200,169,110,0.15); }
+  .stat-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+  .stat-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--grey); }
+
+  /* SERVICES */
+  .services { background: var(--black); }
+  .services-inner { max-width: 1300px; margin: 0 auto; }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+  .services-desc { font-size: 0.7rem; line-height: 2; color: var(--grey); max-width: 320px; letter-spacing: 0.04em; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .service-card { background: var(--dark2); padding: 3.5rem 2.5rem; position: relative; overflow: hidden; transition: background 0.4s; cursor: pointer; }
+  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.77,0,0.18,1); }
+  .service-card:hover { background: #1d1a15; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num { font-family: var(--font-display); font-size: 4rem; font-weight: 300; color: rgba(200,169,110,0.1); line-height: 1; margin-bottom: 2rem; transition: color 0.4s; }
+  .service-card:hover .service-num { color: rgba(200,169,110,0.28); }
+  .service-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; opacity: 0.7; }
+  .service-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; margin-bottom: 1rem; letter-spacing: 0.02em; }
+  .service-desc { font-size: 0.65rem; line-height: 2; color: var(--grey); letter-spacing: 0.04em; margin-bottom: 2rem; }
+  .service-link { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 0.8rem; opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
+  .service-link::after { content: '→'; font-size: 0.8rem; }
+  .service-card:hover .service-link { opacity: 1; transform: translateY(0); }
+
+  /* PROCESS */
+  .process { background: var(--dark); }
+  .process-inner { max-width: 1300px; margin: 0 auto; }
+  .process-header { margin-bottom: 5rem; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 3rem; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold-dim), transparent); opacity: 0.4; }
+  .process-step { padding: 0 2rem; text-align: center; }
+  .step-dot { width: 24px; height: 24px; border: 1px solid var(--gold); border-radius: 50%; margin: 2rem auto 2.5rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+  .step-dot::after { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .process-step:hover .step-dot { background: rgba(200,169,110,0.15); }
+  .step-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1rem; }
+  .step-desc { font-size: 0.62rem; line-height: 2; color: var(--grey); letter-spacing: 0.04em; }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--black); }
+  .portfolio-inner { max-width: 1300px; margin: 0 auto; }
+  .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; }
+  .portfolio-item { position: relative; overflow: hidden; background: var(--dark3); cursor: pointer; }
+  .portfolio-item:nth-child(1) { grid-column: span 7; aspect-ratio: 16/10; }
+  .portfolio-item:nth-child(2) { grid-column: span 5; aspect-ratio: 4/3; }
+  .portfolio-item:nth-child(3) { grid-column: span 4; aspect-ratio: 4/3; }
+  .portfolio-item:nth-child(4) { grid-column: span 8; aspect-ratio: 16/9; }
+  .portfolio-photo { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .portfolio-item:hover .portfolio-photo { transform: scale(1.07); }
+  .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.2) 50%, transparent 100%); opacity: 0; transition: opacity 0.45s; display: flex; align-items: flex-end; padding: 2rem; }
+  html[lang="ar"] .portfolio-overlay { direction: rtl; }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-tag { font-size: 0.5rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .portfolio-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; }
+
+  /* TESTIMONIAL */
+  .testimonial { background: var(--dark); text-align: center; padding: 8rem 4rem; overflow: hidden; position: relative; }
+  .testimonial::before { content: '\201C'; position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-family: var(--font-display); font-size: 20rem; color: rgba(200,169,110,0.04); line-height: 1; pointer-events: none; }
+  .testimonial-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+  .testimonial-text { font-family: var(--font-display); font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 300; font-style: italic; line-height: 1.7; color: var(--white); margin-bottom: 3rem; }
+  .testimonial-author { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); }
+  .testimonial-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 2rem; }
+  .t-dot { width: 20px; height: 1px; background: var(--gold-dim); transition: background 0.3s, width 0.3s; cursor: pointer; }
+  .t-dot.active { background: var(--gold); width: 40px; }
+
+  /* CONTACT */
+  .contact { background: var(--black); }
+  .contact-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+  .contact-info p { font-size: 0.7rem; line-height: 2.2; color: var(--grey); letter-spacing: 0.04em; margin-bottom: 3rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .contact-item-label { font-size: 0.5rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); min-width: 80px; padding-top: 0.15rem; }
+  .contact-item-val { font-size: 0.7rem; color: var(--grey); line-height: 1.7; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.6rem; }
+  .form-field label { font-size: 0.5rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-dim); }
+  .form-field input, .form-field textarea, .form-field select { background: transparent; border: none; border-bottom: 1px solid rgba(200,169,110,0.2); padding: 0.8rem 0; color: var(--white); font-family: var(--font-body); font-size: 0.75rem; font-weight: 300; outline: none; transition: border-color 0.3s; cursor: none; }
+  .form-field select option { background: var(--dark2); }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
+  .form-field textarea { resize: none; height: 80px; }
+  .btn-submit { margin-top: 1rem; display: inline-flex; align-items: center; gap: 1.5rem; background: none; border: 1px solid var(--gold); padding: 1.2rem 2.5rem; font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); cursor: pointer; transition: background 0.3s, color 0.3s; }
+  .btn-submit:hover { background: var(--gold); color: var(--black); }
+  .arrow-icon { transition: transform 0.3s; }
+  .btn-submit:hover .arrow-icon { transform: translateX(6px); }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid rgba(200,169,110,0.1); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.3em; color: var(--white); }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 0.55rem; letter-spacing: 0.15em; color: var(--grey); }
+  .footer-socials { display: flex; gap: 2rem; }
+  .footer-socials a { font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.3s; }
+  .footer-socials a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LANGUAGE TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btnEn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btnAr" onclick="setLang('ar')">عربي</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MAISON <span>ÉLITE</span></a>
+  <ul class="nav-links">
+    <li><a href="#about"    data-en="Studio"      data-ar="الاستوديو">Studio</a></li>
+    <li><a href="#services" data-en="Services"    data-ar="خدماتنا">Services</a></li>
+    <li><a href="#portfolio" data-en="Portfolio"  data-ar="أعمالنا">Portfolio</a></li>
+    <li><a href="#contact"  data-en="Contact"     data-ar="تواصل معنا">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-en="Luxury Architecture & Design Studio" data-ar="استوديو العمارة والتصميم الفاخر">Luxury Architecture & Design Studio</p>
+    <h1 class="hero-title" data-en="Where Vision<br>Becomes <em>Architecture</em>" data-ar="حيث تتحوّل<br>الرؤية إلى <em>عمارة</em>">Where Vision<br>Becomes <em>Architecture</em></h1>
+    <p class="hero-subtitle" data-en="Crafting extraordinary living spaces for those who demand nothing less than perfection" data-ar="نصنع مساحات معيشية استثنائية لمن يسعون إلى الكمال في كل تفصيل">Crafting extraordinary living spaces for those who demand nothing less than perfection</p>
+    <a href="#portfolio" class="hero-cta" data-en="Explore Our Work" data-ar="استكشف أعمالنا">Explore Our Work</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Architecture & Design" data-ar="العمارة والتصميم">Architecture & Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Interior Design" data-ar="التصميم الداخلي">Interior Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Renovation & Remodeling" data-ar="التجديد وإعادة التصميم">Renovation & Remodeling</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Luxury Living" data-ar="الحياة الفاخرة">Luxury Living</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Est. 2008" data-ar="منذ عام ٢٠٠٨">Est. 2008</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Architecture & Design" data-ar="العمارة والتصميم">Architecture & Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Interior Design" data-ar="التصميم الداخلي">Interior Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Renovation & Remodeling" data-ar="التجديد وإعادة التصميم">Renovation & Remodeling</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Luxury Living" data-ar="الحياة الفاخرة">Luxury Living</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Est. 2008" data-ar="منذ عام ٢٠٠٨">Est. 2008</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Architecture & Design" data-ar="العمارة والتصميم">Architecture & Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Interior Design" data-ar="التصميم الداخلي">Interior Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Renovation & Remodeling" data-ar="التجديد وإعادة التصميم">Renovation & Remodeling</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Luxury Living" data-ar="الحياة الفاخرة">Luxury Living</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Est. 2008" data-ar="منذ عام ٢٠٠٨">Est. 2008</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-image reveal">
+      <img class="about-photo" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85&auto=format&fit=crop" alt="Luxury interior" loading="lazy" />
+      <div class="about-corner"></div>
+      <div class="about-corner br"></div>
+    </div>
+    <div class="about-text">
+      <p class="section-label reveal" data-en="Our Story" data-ar="قصتنا">Our Story</p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="Redefining the Art<br>of <em>Fine Living</em>" data-ar="نُعيد تعريف فن<br><em>الحياة الرفيعة</em>">Redefining the Art<br>of <em>Fine Living</em></h2>
+      <p class="reveal reveal-delay-2" data-en="<strong>Maison Élite</strong> was founded on a singular belief: that every home should be a masterpiece. For over fifteen years, we have partnered with discerning clients to craft spaces that transcend the ordinary — where architecture, interiors, and lifestyle converge in perfect harmony." data-ar="تأسست <strong>ميزون إيليت</strong> على قناعة راسخة: أن كل منزل يجب أن يكون تحفة فنية. على مدى أكثر من خمسة عشر عاماً، عملنا جنباً إلى جنب مع عملائنا لخلق مساحات تتجاوز المألوف — حيث تتلاقى العمارة والتصميم الداخلي وأسلوب الحياة في تناغم مثالي."><strong>Maison Élite</strong> was founded on a singular belief: that every home should be a masterpiece. For over fifteen years, we have partnered with discerning clients to craft spaces that transcend the ordinary — where architecture, interiors, and lifestyle converge in perfect harmony.</p>
+      <p class="reveal reveal-delay-3" data-en="Our multidisciplinary team brings together <strong>award-winning architects, interior visionaries,</strong> and master craftsmen who share an obsession with detail. Every element orchestrated with precision and artistry." data-ar="يضم فريقنا متعدد التخصصات <strong>معماريين حائزين على جوائز، ومصممي ديكور ملهمين،</strong> وحرفيين بارعين يتشاركون هوساً بالتفاصيل. كل عنصر يُنسَّق بدقة وفن.">Our multidisciplinary team brings together <strong>award-winning architects, interior visionaries,</strong> and master craftsmen who share an obsession with detail. Every element orchestrated with precision and artistry.</p>
+      <div class="stats-row">
+        <div class="stat reveal reveal-delay-1">
+          <div class="stat-num">320+</div>
+          <div class="stat-label" data-en="Projects Completed" data-ar="مشروع منجز">Projects Completed</div>
+        </div>
+        <div class="stat reveal reveal-delay-2">
+          <div class="stat-num">15</div>
+          <div class="stat-label" data-en="Years of Excellence" data-ar="عاماً من التميز">Years of Excellence</div>
+        </div>
+        <div class="stat reveal reveal-delay-3">
+          <div class="stat-num">28</div>
+          <div class="stat-label" data-en="Design Awards" data-ar="جائزة تصميم">Design Awards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <p class="section-label reveal" data-en="What We Do" data-ar="ما نقدمه">What We Do</p>
+        <h2 class="section-title reveal reveal-delay-1" data-en="Our <em>Services</em>" data-ar="<em>خدماتنا</em>">Our <em>Services</em></h2>
+      </div>
+      <p class="services-desc reveal reveal-delay-2" data-en="A complete suite of luxury design services, meticulously tailored to transform your vision into an extraordinary living reality." data-ar="مجموعة متكاملة من خدمات التصميم الفاخر، مصممة بعناية لتحويل رؤيتك إلى واقع معيشي استثنائي.">A complete suite of luxury design services, meticulously tailored to transform your vision into an extraordinary living reality.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num" data-en="01" data-ar="٠١">01</div>
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="5" y="15" width="30" height="22" stroke="#C8A96E" stroke-width="0.8"/><path d="M5 15 L20 4 L35 15" stroke="#C8A96E" stroke-width="0.8"/><rect x="16" y="26" width="8" height="11" stroke="#C8A96E" stroke-width="0.6"/><rect x="8" y="19" width="6" height="6" stroke="#C8A96E" stroke-width="0.5"/><rect x="26" y="19" width="6" height="6" stroke="#C8A96E" stroke-width="0.5"/></svg>
+        <h3 class="service-name" data-en="Architecture<br>& Design" data-ar="العمارة<br>والتصميم">Architecture<br>& Design</h3>
+        <p class="service-desc" data-en="From concept sketches to construction-ready blueprints — we design homes that stand as enduring expressions of architectural artistry. Every line drawn with purpose, every space conceived with intention." data-ar="من الرسومات الأولى حتى المخططات الجاهزة للتنفيذ — نصمم منازل تُجسّد الفن المعماري الخالد. كل خط يُرسم بهدف، وكل فضاء يُصمَّم بنية راسخة.">From concept sketches to construction-ready blueprints — we design homes that stand as enduring expressions of architectural artistry. Every line drawn with purpose, every space conceived with intention.</p>
+        <a href="#contact" class="service-link" data-en="Begin Your Project" data-ar="ابدأ مشروعك">Begin Your Project</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num" data-en="02" data-ar="٠٢">02</div>
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" stroke="#C8A96E" stroke-width="0.8"/><rect x="8" y="12" width="10" height="16" stroke="#C8A96E" stroke-width="0.5"/><rect x="22" y="12" width="10" height="8" stroke="#C8A96E" stroke-width="0.5"/><line x1="22" y1="24" x2="32" y2="24" stroke="#C8A96E" stroke-width="0.5"/><line x1="22" y1="27" x2="32" y2="27" stroke="#C8A96E" stroke-width="0.5"/><line x1="4" y1="32" x2="36" y2="32" stroke="#C8A96E" stroke-width="0.6"/></svg>
+        <h3 class="service-name" data-en="Interior<br>Design" data-ar="التصميم<br>الداخلي">Interior<br>Design</h3>
+        <p class="service-desc" data-en="We curate interiors that balance aesthetic grandeur with intimate comfort. Our designers source extraordinary materials, bespoke furnishings, and one-of-a-kind artworks to compose spaces of rare beauty." data-ar="نُنسّق تصاميم داخلية تجمع بين الفخامة البصرية والراحة الحميمة. يختار مصمّمونا مواد استثنائية وأثاثاً مخصصاً وأعمالاً فنية فريدة لخلق مساحات تشع بجمال نادر.">We curate interiors that balance aesthetic grandeur with intimate comfort. Our designers source extraordinary materials, bespoke furnishings, and one-of-a-kind artworks to compose spaces of rare beauty.</p>
+        <a href="#contact" class="service-link" data-en="Explore Interiors" data-ar="استكشف التصاميم">Explore Interiors</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num" data-en="03" data-ar="٠٣">03</div>
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><path d="M6 34 L6 20 L14 12 L22 20 L22 34" stroke="#C8A96E" stroke-width="0.8"/><path d="M22 34 L22 22 L34 10" stroke="#C8A96E" stroke-width="0.8"/><rect x="10" y="26" width="6" height="8" stroke="#C8A96E" stroke-width="0.5"/><line x1="4" y1="34" x2="36" y2="34" stroke="#C8A96E" stroke-width="0.6"/><line x1="28" y1="10" x2="34" y2="10" stroke="#C8A96E" stroke-width="0.8"/><line x1="34" y1="10" x2="34" y2="16" stroke="#C8A96E" stroke-width="0.8"/></svg>
+        <h3 class="service-name" data-en="Renovation<br>& Remodeling" data-ar="التجديد<br>وإعادة التصميم">Renovation<br>& Remodeling</h3>
+        <p class="service-desc" data-en="We breathe extraordinary new life into existing properties. Whether a subtle refinement or a complete transformation, our renovation expertise preserves character while elevating every dimension of your home." data-ar="نبعث حياة استثنائية جديدة في العقارات القائمة. سواء أكان تحسيناً دقيقاً أم تحولاً شاملاً، تحافظ خبرتنا في التجديد على طابع المكان مع تطوير كل بُعد من أبعاد منزلك.">We breathe extraordinary new life into existing properties. Whether a subtle refinement or a complete transformation, our renovation expertise preserves character while elevating every dimension of your home.</p>
+        <a href="#contact" class="service-link" data-en="Reimagine Your Home" data-ar="أعد تخيّل منزلك">Reimagine Your Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <p class="section-label reveal" data-en="How We Work" data-ar="كيف نعمل">How We Work</p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="Our <em>Process</em>" data-ar="<em>منهجيتنا</em>">Our <em>Process</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-dot"></div>
+        <h4 class="step-title" data-en="Discovery" data-ar="الاستكشاف">Discovery</h4>
+        <p class="step-desc" data-en="We begin with deep listening — understanding your lifestyle, aspirations, and the story you want your home to tell." data-ar="نبدأ بالاستماع العميق — لفهم أسلوب حياتك وتطلعاتك والحكاية التي تريد أن يرويها منزلك.">We begin with deep listening — understanding your lifestyle, aspirations, and the story you want your home to tell.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-dot"></div>
+        <h4 class="step-title" data-en="Concept" data-ar="التصور الإبداعي">Concept</h4>
+        <p class="step-desc" data-en="Our designers translate your vision into inspired concepts, presenting curated mood boards and spatial studies." data-ar="يترجم مصمّمونا رؤيتك إلى مفاهيم إبداعية، مع لوحات مزاج منتقاة ودراسات فضائية.">Our designers translate your vision into inspired concepts, presenting curated mood boards and spatial studies.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-dot"></div>
+        <h4 class="step-title" data-en="Refinement" data-ar="الصقل والتطوير">Refinement</h4>
+        <p class="step-desc" data-en="Through collaborative dialogue, we refine every detail until the design is an unmistakable expression of you." data-ar="من خلال حوار تشاركي، نصقل كل تفصيل حتى يصبح التصميم تعبيراً لا لبس فيه عن شخصيتك.">Through collaborative dialogue, we refine every detail until the design is an unmistakable expression of you.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-dot"></div>
+        <h4 class="step-title" data-en="Delivery" data-ar="التسليم">Delivery</h4>
+        <p class="step-desc" data-en="We oversee construction and installation with obsessive attention — ensuring flawless execution of the final vision." data-ar="نُشرف على البناء والتركيب بعناية دقيقة — لضمان تنفيذ رؤيتك النهائية بلا أي خلل.">We oversee construction and installation with obsessive attention — ensuring flawless execution of the final vision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-inner">
+    <div class="portfolio-header">
+      <div>
+        <p class="section-label reveal" data-en="Selected Works" data-ar="أبرز أعمالنا">Selected Works</p>
+        <h2 class="section-title reveal reveal-delay-1" data-en="Our <em>Portfolio</em>" data-ar="<em>معرض أعمالنا</em>">Our <em>Portfolio</em></h2>
+      </div>
+      <a href="#contact" class="hero-cta reveal reveal-delay-2" data-en="View All Projects" data-ar="عرض جميع المشاريع">View All Projects</a>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <img class="portfolio-photo" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&q=85&auto=format&fit=crop" alt="The Meridian Residence" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <p class="portfolio-tag" data-en="Architecture · Beverly Hills" data-ar="عمارة · بيفرلي هيلز">Architecture · Beverly Hills</p>
+            <p class="portfolio-name" data-en="The Meridian Residence" data-ar="إقامة الميريديان">The Meridian Residence</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-1">
+        <img class="portfolio-photo" src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=85&auto=format&fit=crop" alt="Park Avenue Penthouse" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <p class="portfolio-tag" data-en="Interior · Manhattan" data-ar="تصميم داخلي · مانهاتن">Interior · Manhattan</p>
+            <p class="portfolio-name" data-en="Park Avenue Penthouse" data-ar="بنتهاوس بارك أفينيو">Park Avenue Penthouse</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img class="portfolio-photo" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=85&auto=format&fit=crop" alt="Coral Estate Revival" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <p class="portfolio-tag" data-en="Renovation · Miami" data-ar="تجديد · ميامي">Renovation · Miami</p>
+            <p class="portfolio-name" data-en="Coral Estate Revival" data-ar="تجديد إستيت كورال">Coral Estate Revival</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-1">
+        <img class="portfolio-photo" src="https://images.unsplash.com/photo-1613490493576-7f0d9a87f8e0?w=1200&q=85&auto=format&fit=crop" alt="Dune House" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <p class="portfolio-tag" data-en="Architecture · The Hamptons" data-ar="عمارة · هامبتونز">Architecture · The Hamptons</p>
+            <p class="portfolio-name" data-en="Dune House" data-ar="بيت الكثبان">Dune House</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <p class="section-label reveal" style="justify-content:center" data-en="Client Voices" data-ar="آراء عملائنا">Client Voices</p>
+    <p class="testimonial-text reveal" id="testimonialText"></p>
+    <p class="testimonial-author reveal reveal-delay-1" id="testimonialAuthor"></p>
+    <div class="testimonial-dots">
+      <div class="t-dot active" onclick="setTestimonial(0)"></div>
+      <div class="t-dot" onclick="setTestimonial(1)"></div>
+      <div class="t-dot" onclick="setTestimonial(2)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p class="section-label reveal" data-en="Get In Touch" data-ar="تواصل معنا">Get In Touch</p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="Let's Create Something <em>Extraordinary</em>" data-ar="لنصنع معاً شيئاً <em>استثنائياً</em>">Let's Create Something <em>Extraordinary</em></h2>
+      <p class="reveal reveal-delay-2" data-en="Every great home begins with a conversation. Tell us about your vision, and we'll tell you how we can bring it to life — with precision, artistry, and unwavering commitment to excellence." data-ar="كل منزل عظيم يبدأ بمحادثة. حدّثنا عن رؤيتك، وسنخبرك كيف يمكننا تحقيقها — بدقة وفن والتزام راسخ بالتميز.">Every great home begins with a conversation. Tell us about your vision, and we'll tell you how we can bring it to life — with precision, artistry, and unwavering commitment to excellence.</p>
+      <div class="contact-details">
+        <div class="contact-item reveal reveal-delay-2">
+          <span class="contact-item-label" data-en="Address" data-ar="العنوان">Address</span>
+          <span class="contact-item-val" data-en="1 Grand Palais Boulevard<br>New York, NY 10001" data-ar="١ شارع غران باليه<br>نيويورك، الولايات المتحدة">1 Grand Palais Boulevard<br>New York, NY 10001</span>
+        </div>
+        <div class="contact-item reveal reveal-delay-3">
+          <span class="contact-item-label" data-en="Phone" data-ar="الهاتف">Phone</span>
+          <span class="contact-item-val">+1 (212) 555 0190</span>
+        </div>
+        <div class="contact-item reveal reveal-delay-3">
+          <span class="contact-item-label" data-en="Email" data-ar="البريد">Email</span>
+          <span class="contact-item-val">hello@maisonelite.com</span>
+        </div>
+        <div class="contact-item reveal reveal-delay-4">
+          <span class="contact-item-label" data-en="Hours" data-ar="أوقات العمل">Hours</span>
+          <span class="contact-item-val" data-en="Monday – Friday<br>9:00 AM – 6:00 PM EST" data-ar="الاثنين – الجمعة<br>٩:٠٠ ص – ٦:٠٠ م">Monday – Friday<br>9:00 AM – 6:00 PM EST</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-field">
+        <label data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+        <input type="text" data-ph-en="Your name" data-ph-ar="اسمك الكامل" placeholder="Your name" />
+      </div>
+      <div class="form-field">
+        <label data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</label>
+        <input type="email" data-ph-en="your@email.com" data-ph-ar="بريدك@إيميل.كوم" placeholder="your@email.com" />
+      </div>
+      <div class="form-field">
+        <label data-en="Service Interest" data-ar="الخدمة المطلوبة">Service Interest</label>
+        <select>
+          <option data-en="Select a service" data-ar="اختر خدمة">Select a service</option>
+          <option data-en="Architecture & Design" data-ar="العمارة والتصميم">Architecture & Design</option>
+          <option data-en="Interior Design" data-ar="التصميم الداخلي">Interior Design</option>
+          <option data-en="Renovation & Remodeling" data-ar="التجديد وإعادة التصميم">Renovation & Remodeling</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label data-en="Your Vision" data-ar="رؤيتك">Your Vision</label>
+        <textarea data-ph-en="Tell us about your project…" data-ph-ar="حدّثنا عن مشروعك…" placeholder="Tell us about your project…"></textarea>
+      </div>
+      <button class="btn-submit" type="button">
+        <span data-en="Send Enquiry" data-ar="إرسال الاستفسار">Send Enquiry</span>
+        <span class="arrow-icon">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MAISON <span>ÉLITE</span></div>
+  <p class="footer-copy" data-en="© 2024 Maison Élite Design Studio. All Rights Reserved." data-ar="© ٢٠٢٤ ميزون إيليت للتصميم. جميع الحقوق محفوظة.">© 2024 Maison Élite Design Studio. All Rights Reserved.</p>
+  <div class="footer-socials">
+    <a href="#">Instagram</a>
+    <a href="#">Pinterest</a>
+    <a href="#">Houzz</a>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){
+    cursor.style.left=mx+'px';cursor.style.top=my+'px';
+    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.service-card,.portfolio-item,.t-dot').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cursor.style.transform='translate(-50%,-50%) scale(2.5)');
+    el.addEventListener('mouseleave',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');
+  });
+
+  // SCROLL REVEAL
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // TESTIMONIALS
+  const T = {
+    en:[
+      {text:'"Working with Maison Élite was unlike anything we anticipated. They didn\'t just design our home — they understood the way we live, and created a space that feels like it was always meant to be ours."',author:'— Victoria & James Harlow, Beverly Hills'},
+      {text:'"The renovation exceeded every expectation. What was once an ordinary property is now a landmark. Maison Élite\'s attention to detail is simply unmatched in the industry."',author:'— Alexander Chen, Manhattan'},
+      {text:'"From the first consultation to the final reveal, the experience was seamless and genuinely inspiring. Our new home is everything we dreamed of — and more."',author:'— Sophia & Marco Laurent, The Hamptons'}
+    ],
+    ar:[
+      {text:'"التعامل مع ميزون إيليت كان تجربة استثنائية تجاوزت كل توقعاتنا. لم يصمّموا منزلنا فحسب — بل فهموا طريقة حياتنا، وأنشأوا مساحة تبدو كأنها كانت مُعدّة لنا دائماً."',author:'— فيكتوريا وجيمس هارلو، بيفرلي هيلز'},
+      {text:'"التجديد تجاوز كل توقعاتنا. ما كان مجرد عقار عادي أصبح اليوم معلماً بارزاً. اهتمام ميزون إيليت بالتفاصيل لا مثيل له في هذه الصناعة."',author:'— ألكسندر تشن، مانهاتن'},
+      {text:'"من أول استشارة حتى اللحظة النهائية، كانت التجربة سلسة وملهمة حقاً. منزلنا الجديد هو كل ما حلمنا به — وأكثر."',author:'— صوفيا وماركو لوران، هامبتونز'}
+    ]
+  };
+  let lang='en', tidx=0, autoT;
+  const tText=document.getElementById('testimonialText');
+  const tAuth=document.getElementById('testimonialAuthor');
+  tText.style.transition='opacity 0.4s,transform 0.4s';
+  tAuth.style.transition='opacity 0.4s';
+
+  function setTestimonial(i){
+    tidx=i;
+    tText.style.opacity='0';tText.style.transform='translateY(10px)';
+    tAuth.style.opacity='0';
+    setTimeout(()=>{
+      tText.textContent=T[lang][i].text;
+      tAuth.textContent=T[lang][i].author;
+      tText.style.opacity='1';tText.style.transform='translateY(0)';
+      tAuth.style.opacity='1';
+    },350);
+    document.querySelectorAll('.t-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
+  }
+  function startAuto(){ clearInterval(autoT); autoT=setInterval(()=>setTestimonial((tidx+1)%3),6000); }
+  document.querySelectorAll('.t-dot').forEach((d,i)=>{
+    d.addEventListener('click',()=>{ setTestimonial(i); startAuto(); });
+  });
+
+  // LANGUAGE
+  function setLang(l){
+    lang=l;
+    document.documentElement.setAttribute('lang',l);
+    document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    document.getElementById('btnEn').classList.toggle('active',l==='en');
+    document.getElementById('btnAr').classList.toggle('active',l==='ar');
+
+    // Update all [data-en] / [data-ar]
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const v=el.getAttribute('data-'+l);
+      if(v!==null) el.innerHTML=v;
+    });
+    // Placeholders
+    document.querySelectorAll('[data-ph-en]').forEach(el=>{
+      el.placeholder=el.getAttribute('data-ph-'+l)||'';
+    });
+    // Select options
+    document.querySelectorAll('select option[data-en]').forEach(o=>{
+      o.textContent=o.getAttribute('data-'+l)||'';
+    });
+    // Arrow
+    document.querySelectorAll('.arrow-icon').forEach(a=>{ a.textContent=l==='ar'?'←':'→'; });
+    // Testimonial
+    setTestimonial(tidx);
+  }
+
+  // Init
+  setTestimonial(0);
+  startAuto();
+</script>
+</body>
+</html>
