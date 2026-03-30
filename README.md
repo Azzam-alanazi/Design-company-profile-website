@@ -11,7 +11,7 @@
 
 ## 🌐 Live Demo
 
-👉 [View Live Site](https://YOUR-USERNAME.github.io/maison-elite/company-profile.html)
+👉 [View Live Site](https://azzam-alanazi.github.io/Design-company-profile-website/)
 
 ---
 
